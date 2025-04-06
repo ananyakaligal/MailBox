@@ -1,0 +1,110 @@
+export interface User {
+  id: string
+  email: string
+  username: string
+  fullName?: string
+}
+
+export interface Email {
+  id: string
+  subject: string
+  content: string
+  date: string
+  read: boolean
+  from: {
+    id: string
+    email: string
+    name: string
+  }
+  to: {
+    id: string
+    email: string
+    name: string
+  }
+}
+
+export interface Database {
+  public: {
+    Tables: {
+      users: {
+        Row: {
+          id: string
+          email: string
+          username: string
+          password_hash: string
+          full_name: string | null
+          created_at: string
+          updated_at: string | null
+        }
+        Insert: {
+          id?: string
+          email: string
+          username: string
+          password_hash: string
+          full_name?: string | null
+          created_at?: string
+          updated_at?: string | null
+        }
+        Update: {
+          id?: string
+          email?: string
+          username?: string
+          password_hash?: string
+          full_name?: string | null
+          created_at?: string
+          updated_at?: string | null
+        }
+      }
+      sessions: {
+        Row: {
+          id: string
+          user_id: string
+          expires_at: string
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          expires_at: string
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          expires_at?: string
+          created_at?: string
+        }
+      }
+      emails: {
+        Row: {
+          id: string
+          subject: string
+          content: string
+          from_user_id: string
+          to_user_id: string
+          read: boolean
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          subject: string
+          content: string
+          from_user_id: string
+          to_user_id: string
+          read?: boolean
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          subject?: string
+          content?: string
+          from_user_id?: string
+          to_user_id?: string
+          read?: boolean
+          created_at?: string
+        }
+      }
+    }
+  }
+}
+
